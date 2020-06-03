@@ -27,6 +27,7 @@ userType :
 请务必到service test里查看userService.insert(user)的测试，学习如何插入普通用户、快递员、商家、画管理员。
 ### 2.2 封装favoriteService.
 封装favorite_canteen mapper 、favorite_dish mapper、favorite_window mapper
+### 2.3 dao-pom.xml新增log4j插件，可输出dao层测试报告
 ## 3.web
 ### 3.1 删减关于adminservice、driverservice方法以及其操作
 需要重写driver和admin模块
