@@ -2,6 +2,7 @@
  online ordering meal system
 # 新增修改
 ## 1. 数据库
+### 数据库未部署到服务器上，db.properties是本地数据库连接，请部署到localhost数据库上
 ### 1.1 新增favorite_canteen、favorite_dish、favorite_window表
 ### 1.2 删减driver、admin表
 userType :
@@ -24,7 +25,7 @@ userType :
 ### 1.6 删除无用的menu表
 ## 2. dao-service
 ### 2.1 封装userService.insert(user) 并做测试
-请务必到service test里查看userService.insert(user)的测试，学习如何插入普通用户、快递员、商家、画管理员。
+请务必到service test里查看userService.insert(user)的测试，学习如何插入普通用户、快递员、商家、管理员。
 ### 2.2 封装favoriteService.
 封装favorite_canteen mapper 、favorite_dish mapper、favorite_window mapper
 ### 2.3 dao-pom.xml新增log4j插件，可输出dao层测试报告
