@@ -3,19 +3,11 @@
 # 新增修改
 ## 1. 数据库
 ### 数据库未部署到服务器上，db.properties是本地数据库连接，请部署到localhost数据库上
-
-### 1.1 修改order表字段属性
-删除属性cart_id
-新增order_code属性存放取餐码
-### 1.2 新增history_item表外键
-外键关联order表的order_id,以免在history_item表中插入order表没有的order_id
-删除顺序先删除history_item表内容再删除order表内容。否则报错。
-## 2. dao-service
-### 2.1 删减order的dao-service方法和属性
-## 3.web
-
-### 3.1 修改controller里关于生成insert( new order )的方法
-
+### 1.1 增加order表的user_tele , window_tele,canteen_tele属性
+## 2.web
+### 2.1 新增收藏模块，搜索优化，可局部刷新，收藏与取消收藏左滑即可操作，均为局部刷新。
+### 2.2 选择食物，新增购物车，点击蓝色bar滑出，再次点击滑回。从餐厅到食物自动加入购物车，如果在餐厅页面点击菜。
+### 2.3 优化历史订单，新增订单详情，可点击选项即可进入订单详情，若为外卖有投诉骑手功能，若为堂食则无。
 # 测试报告
 已测试，能正常运行
 
