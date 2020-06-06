@@ -1,0 +1,16 @@
+com/niit/mapper/UserMapper.class
+com/niit/mapper/OrderMapper.class
+com/niit/mapper/HistoryItemMapper.class
+com/niit/mapper/CartItemMapper.class
+com/niit/mapper/FavoriteWindowMapper.class
+com/niit/mapper/FavoriteMapper.class
+com/niit/mapper/DishMapper.class
+com/niit/mapper/FavoriteDishMapper.class
+com/niit/mapper/UserAddressMapper.class
+com/niit/mapper/CommentsMapper.class
+com/niit/mapper/CanteenMapper.class
+com/niit/mapper/FavoriteCanteenMapper.class
+com/niit/mapper/WindowMapper.class
+com/niit/mapper/UserTeleMapper.class
+com/niit/mapper/CartMapper.class
+com/niit/util/ProcessTime.class

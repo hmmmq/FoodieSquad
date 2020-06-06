@@ -1,0 +1,82 @@
+body {
+    margin:0 auto;
+}
+
+@media screen and (min-width: 1000px) {
+    body {
+        width:980px;
+    }
+}
+.container{
+    margin: 0 auto;
+	z-index: 4;
+	width: 375px;
+	height: 812px;
+	background: #ffffff;
+	border:0.5px solid;
+	border-color: rgba(151, 151, 151, 0.3);
+}
+.headingBox{
+
+	margin-left: 32px;
+	padding-top:65px;
+}
+
+.closeButtonSize{
+	width: 15px;
+	height: 15px;
+}
+.topBox{
+	width: 376px;
+	height: 600px;
+	
+}
+.logoImg{
+	width: 189px;
+	height: 87px;
+	position:absolute;
+	margin-top:420px;
+}
+.clickBox{
+	width: 100%;
+	height: 144px;
+}
+.button1{
+	margin:0 35px;
+	 width: 307px;
+  height: 53px;
+  border-radius: 35px;
+  border: solid 0.5px #979797;
+  background: rgba(66,140,255,0.82);
+  color: #ffffff;
+  font-family: "PingFangSC-Semibold";
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  text-align: center;
+}
+.button2{
+	margin:18px 35px ;
+	 width: 307px;
+  height: 53px;
+  border-radius: 35px;
+  border: solid 0.5px #979797;
+  background: rgba(66,140,255,0.23);
+  color: #ffffff;
+  font-family: "PingFangSC-Semibold";
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px;
+  text-align: center;
+}
+.addtionBox{
+	margin-top:5px;
+}
+.additionText{
+	font-family: PingFangSC-Semibold;
+	font-size: 11px;
+	color: #8E8E93;
+	letter-spacing: 0;
+	text-align: center;
+	line-height: 34px;
+}
