@@ -3,6 +3,7 @@
 # 新增修改
 ## 1. dao
 ### 1.1 修改userMapper.xml update语法错误
+### 1.2 修改db.properties可使用服务器上的test数据库
 ## 2.web
 ### 2.1 优化结算页面ui
 ### 2.2 优化订单详情页面ui
