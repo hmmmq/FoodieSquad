@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.niit.mapper.FavoriteWindowMapper">
+  <resultMap id="BaseResultMap" type="com.niit.pojo.FavoriteWindow">
+   
+    <id column="favorite_window_id" jdbcType="INTEGER" property="favoriteWindowId" />
+     
+     <result column="favorite_id" jdbcType="INTEGER" property="favoriteId" />
+    
+    <association column="window_id" javaType="com.niit.pojo.Window" jdbcType="INTEGER" property="windowId" resultMap="WindowMap" />
+   
+  </resultMap>
+  <resultMap id="WindowMap" type="com.niit.pojo.Window">
+    <id column="window_id" jdbcType="INTEGER" property="windowId" />
+    <result column="window_name" jdbcType="VARCHAR" property="windowName" />
+    <result column="window_description" jdbcType="VARCHAR" property="windowDescription" />
+    <result column="canteen_id" jdbcType="INTEGER" property="canteenId" />
+     <result column="sort" jdbcType="INTEGER" property="type" />
+  </resultMap>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from favorite_window
+    where favorite_window_id = #{favoriteWindowId,jdbcType=INTEGER}
+  </delete>
+  
+   <delete id="deleteByUserId" parameterType="java.lang.Integer">
+    delete from favorite_window
+    where favorite_id = #{userId,jdbcType=INTEGER}
+  </delete>
+  
+   <delete id="deleteByUserIdAndWindowId" parameterType="map">
+    delete from favorite_window
+    where favorite_id = #{userId,jdbcType=INTEGER} and window_id=#{windowId,jdbcType=INTEGER}
+  </delete>
+  
+  <insert id="insert" parameterType="com.niit.pojo.FavoriteWindow">
+    insert into favorite_window (window_id, favorite_id
+      )
+    values (#{windowId.windowId,jdbcType=INTEGER}, #{favoriteId,jdbcType=INTEGER}
+      )
+  </insert>
+  
+  <update id="updateByPrimaryKey" parameterType="com.niit.pojo.FavoriteWindow">
+    update favorite_window
+    set window_id = #{windowId.windowId,jdbcType=INTEGER},
+      favorite_id = #{favoriteId,jdbcType=INTEGER}
+    where favorite_window_id = #{favoriteWindowId,jdbcType=INTEGER}
+  </update>
+  
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+     select fw.*,w.*
+    from favorite_window fw left join window w on fw.window_id=w.window_id
+    where favorite_window_id = #{favoriteWindowId,jdbcType=INTEGER}
+  </select>
+  
+  <select id="selectByUserId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+     select fw.*,w.*
+    from favorite_window fw left join window w on fw.window_id=w.window_id
+    where favorite_id = #{userId,jdbcType=INTEGER}
+  </select>
+  
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+   select fw.*,w.*
+    from favorite_window fw left join window w on fw.window_id=w.window_id
+  </select>
+
+</mapper>

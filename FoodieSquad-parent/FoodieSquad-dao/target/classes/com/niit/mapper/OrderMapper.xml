@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.niit.mapper.OrderMapper">
+  <resultMap id="BaseResultMap" type="com.niit.pojo.Order">
+    <id column="order_id" jdbcType="INTEGER" property="orderId" />
+    <id column="user_id" jdbcType="INTEGER" property="userId" />
+   
+    <result column="order_start_time" jdbcType="TIMESTAMP" property="orderStartTime" />
+    <result column="order_end_time" jdbcType="TIMESTAMP" property="orderEndTime" />
+    <result column="order_type" jdbcType="VARCHAR" property="orderType" />
+    <result column="order_arrive_time" jdbcType="TIMESTAMP" property="orderArriveTime" />
+    <result column="deliver_id" jdbcType="INTEGER" property="deliverId" />
+    <result column="order_price" jdbcType="DECIMAL" property="orderPrice" />
+    <result column="order_pay_type" jdbcType="VARCHAR" property="orderPayType" />
+    <result column="order_address" jdbcType="VARCHAR" property="orderAddress" />
+     <result column="order_status" jdbcType="INTEGER" property="orderStatus" />
+      <result column="order_code" jdbcType="VARCHAR" property="orderCode" />
+        <result column="order_user_tele" jdbcType="VARCHAR" property="orderUserTele" />
+       <result column="order_driver_tele" jdbcType="VARCHAR" property="orderDriverTele" />
+          <result column="order_window_tele" jdbcType="VARCHAR" property="orderWindowTele" />
+     </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    delete from `order`
+    where order_id = #{orderId,jdbcType=INTEGER}
+      and user_id = #{userId,jdbcType=INTEGER}
+  
+  </delete>
+  
+   <delete id="deleteByUserId" parameterType="map">
+    delete from `order`
+    where
+     user_id = #{userId,jdbcType=INTEGER}
+    
+  </delete>
+  <insert id="insert" parameterType="com.niit.pojo.Order">
+    insert into `order` (order_id, user_id, 
+      order_start_time, order_type, 
+      order_address, deliver_id, 
+      order_price, order_pay_type,order_code,order_user_tele,order_driver_tele,order_window_tele)
+    values (#{orderId,jdbcType=INTEGER}, 
+    #{userId,jdbcType=INTEGER}, 
+     #{orderStartTime,jdbcType=TIMESTAMP}, 
+      #{orderType,jdbcType=VARCHAR}, 
+     #{orderAddress,jdbcType=VARCHAR}, 
+     #{deliverId,jdbcType=INTEGER}, 
+      #{orderPrice,jdbcType=DECIMAL}, 
+      #{orderPayType,jdbcType=VARCHAR},
+      #{orderCode,jdbcType=VARCHAR},
+      #{orderUserTele,jdbcType=VARCHAR},
+      #{orderDriverTele,jdbcType=VARCHAR},
+      #{orderWindowTele,jdbcType=VARCHAR})
+     
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.niit.pojo.Order">
+    update `order`
+    set order_start_time = #{orderStartTime,jdbcType=TIMESTAMP},
+      order_end_time = #{orderEndTime,jdbcType=TIMESTAMP},
+      order_type = #{orderType,jdbcType=VARCHAR},
+      order_arrive_time = #{orderArriveTime,jdbcType=TIMESTAMP},
+      order_address = #{orderAddress,jdbcType=VARCHAR},
+      deliver_id = #{deliverId,jdbcType=INTEGER},
+      order_price = #{orderPrice,jdbcType=DECIMAL},
+      order_pay_type = #{orderPayType,jdbcType=VARCHAR},
+      order_status=#{orderStatus,jdbcType=INTEGER},
+      order_code=#{orderCode,jdbcType=VARCHAR},
+      order_user_tele=#{orderUserTele,jdbcType=VARCHAR},
+      order_driver_tele=#{orderDriverTele,jdbcType=VARCHAR},
+       order_window_tele= #{orderWindowTele,jdbcType=VARCHAR} 
+    where order_id = #{orderId,jdbcType=INTEGER}
+      and user_id = #{userId,jdbcType=INTEGER}
+    
+  </update>
+  <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+    select *
+    from `order`
+    where order_id = #{orderId,jdbcType=INTEGER}
+      and user_id = #{userId,jdbcType=INTEGER}
+    
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select *
+    from `order`
+  </select>
+  <select id="selectByUserId" parameterType="map" resultMap="BaseResultMap">
+    select *
+    from `order`
+    where 
+    user_id = #{userId,jdbcType=INTEGER}
+  </select>
+  
+</mapper>
