@@ -19,7 +19,7 @@
 <!--容器-->
 <div class="container">
 <!--顶部页面属性与后退-->
-<div class="headingBox"><img src="${imgpth}closebutton.svg" id="closebtn" class="closeButtonSize"/><label for="closebtn" class="headingText">手机登录/注册</label>
+<div class="headingBox"><img src="${imgpth}closebutton.svg" id="closebtn" class="closeButtonSize" onclick="javascript:history.back(-1);"/><label for="closebtn" class="headingText">手机登录/注册</label>
 </div>
 <!--logo图片-->
 <div class="logoBox">
@@ -33,7 +33,11 @@
 </form>
 <!--附加提醒-->
 <div class="addtionBox">
-    <p class="additionText" onclick="call()" ><span style="font-size:20px;border:1px solid 	#D0D0D0;border-radius: 15px;padding:5px 100px;cursor: pointer;"><b>登录</b></span><br/><br/>登录/注册即代表同意<b>服务协议</b></p>
+    <p class="additionText" onclick="call()" ><span style="font-size:20px;border:1px solid 	#D0D0D0;border-radius: 15px;padding:5px 100px;cursor: pointer;"><b>登录</b></span><br/><br/>
+    登录/注册即代表同意<b>服务协议</b>
+    <br>
+    新用户输入手机号后自动进入注册页面
+    </p>
 </div>
 </div>
   <script type="text/javascript">

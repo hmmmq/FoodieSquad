@@ -24,6 +24,7 @@ body {
 .closeButtonSize{
 	width: 15px;
 	height: 15px;
+	margin-right: 22px;
 }
 .headingText{
 	font-family: PingFangSC-Semibold;

@@ -26,7 +26,7 @@
     	var orderId=$(this).find(".orderId").attr("name");
 
     	//转跳
-    	window.location.href="go_to_order_detail.do/orderId/"+orderId+"/userId/"+${userId}+".do";	
+    	window.location.href="${pageContext.request.contextPath}/myOrder/go_to_order_detail.do/orderId/"+orderId+"/userId/"+${userId}+".do";	
     	});
     	
     	$("#goToHome").click(function(){

@@ -34,7 +34,7 @@
 <div><div class="row" style="margin-top:10px;" >
 
 <div class="col-md-2">
-<button name="cancel" id="cancel" onclick=" javascript: $('#model').slideUp();$('#overlay').hide(); ">取消</button>
+<button name="cancel" id="cancel" onclick="window.location.href='${pageContext.request.contextPath}/myOrder/test.do'">取消</button>
 </div>
 <div class="col-md-8" style="margin: 57px;"></div>
 
@@ -48,7 +48,7 @@
  <!-- 标题组头部 -->
     <div id="d1">
         <!-- 返回符号.svg-->
-        <img src="${imgpth}return.svg" onclick="javascript:history.back(-1);">
+        <img src="${imgpth}return.svg" onclick=" window.location.href='${pageContext.request.contextPath}/myOrder/test.do' ">
         <!--label-->
         <label style="">订单详情</label>
      </div>

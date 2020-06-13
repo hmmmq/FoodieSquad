@@ -32,10 +32,16 @@ rs.push(num);
 i++;
 });
 var totalp=$("#totalPrice").text();
-alert(rs+"\nTotal Price: "+$("#totalPrice").text());
+if(totalp!=0){alert(rs+"\nTotal Price: "+$("#totalPrice").text());
 var str = rs.join(',');
-// $.post('/FOODIESQUAD/ChooseFoodServlet',{'menu':rs,'totalPrice':totalp});
-window.location.href="submit.do?menu="+rs;
+//$.post('/FOODIESQUAD/ChooseFoodServlet',{'menu':rs,'totalPrice':totalp});
+
+window.location.href="submit.do?menu="+rs;}
+else{
+	alert("只有点餐才能去结算哦！")
+}
+
+
 });
 
 });
@@ -213,7 +219,7 @@ console.log("choosen_dish.dishId",${choosen_dish.dishId}); */
 <script>
 
 var imgg=img_${dish.dishId}; 
-console.log(imgg);
+console.log("imgg",imgg);
 
 </script>
 
@@ -278,9 +284,12 @@ function d7click(){
 
 //触发 id="defaultOpen" click 事件
 document.getElementById("button0").click();
+if((typeof imgg)!= 'undefined')
 $(imgg).trigger("click");
 $(window_id_index).trigger("click");
-window.onerror=function(){return true;}
+window.onerror=function(){
+	return true;
+	}
 
 
 

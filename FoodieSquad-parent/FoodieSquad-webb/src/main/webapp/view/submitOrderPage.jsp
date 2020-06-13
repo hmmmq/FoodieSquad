@@ -37,7 +37,7 @@
 			$("#d5_d2").click(function() {
 				$("#d5_d2").css("background", "rgba(61,126,255,0.28)");
 				$("#d5_d1").css("background", "#FFFFFF");
-				$("#orderPayType").val("微信");
+				$("#orderPayType").val("支付宝");
 
 			});
 
@@ -112,9 +112,7 @@
 		<div id="d1_5">
 			<!--p2 海南大学第五食堂-->
 			<div id="d2">
-				<p id="d2_p1">${canteenName}</p>
-				<p id="d2_p2">麻辣香锅店</p>
-				<p id="d2_p3">订单编号：201927642187923749</p>
+				<p id="d2_p1">${canteen}</p>
 			</div>
 			<!--p3产品详情-->
 			<div id="d3">
@@ -151,9 +149,9 @@
 			<!--p6联系方式-->
 
 			<div id="telelist" hidden="true">
-			<span style="align:left;float:left">联系方式:</span>
-				<input  style="align:right;float:right;font-size: 3px;color: #8E8E93;letter-spacing: 0;text-align: center;" type="text" class="" id="user_tele"
-					placeholder="${telelist[0].userTele}" list="telelist2"><!-- value="${telelist[0].userTele} -->
+			<span style="align:left;float:left;font-size: 15px;color: #494949;">联系方式:</span>
+				<input  style="align:right;float:right;font-size: 15px;color: #494949;letter-spacing: 0;text-align: center;" type="text" class="" id="user_tele"
+					value="${telelist[0].userTele}" list="telelist2"><!-- value="${telelist[0].userTele} -->
 				<datalist id="telelist2">
 					<c:forEach items="${telelist}" var="tele">
 						<option value="${tele.userTele}">${tele.userTele}</option>
@@ -164,18 +162,16 @@
 			</div>
 			<!-- 取餐地址 -->
              
-             <div id="address" hidden="true" value="${canteen}"><span style="align:left;float:left">取餐地址:</span><span style="align:right;float:right">${canteen}</span></div>
+             <div id="address" hidden="true" value="${canteen}"><span style="align:left;float:left;font-size: 15px;color: #494949;">取餐地址:</span><span style="align:right;float:right;font-size: 15px;color: #494949;letter-spacing: 0;text-align: center;" type="text">${canteen}</span></div>
              <div id="addresslist" hidden="true">
-             <span style="align:left;float:left">常用地址：</span>
-				<input style="align:right;float:right;font-size: 3px;color: #8E8E93;letter-spacing: 0;text-align: center;" type="text" class="" id="user_address"
-					placeholder="${addresslist[0].userAddress}" list="addresslist2" ><!-- value="${addresslist[0].userAddress}" -->
+             <span style="align:left;float:left;font-size: 15px;color: #494949;">常用地址：</span>
+				<input style="align:right;float:right;font-size: 15px;color: #494949;letter-spacing: 0;text-align: center;" type="text" class="" id="user_address"
+					value="${addresslist[0].userAddress}" list="addresslist2" ><!-- value="${addresslist[0].userAddress}" -->
 				<datalist id="addresslist2">
 					<c:forEach items="${addresslist}" var="address">
 						<option value="${address.userAddress}">${address.userAddress}</option>
 					</c:forEach>
 				</datalist>
-
-
 			</div>
 
 

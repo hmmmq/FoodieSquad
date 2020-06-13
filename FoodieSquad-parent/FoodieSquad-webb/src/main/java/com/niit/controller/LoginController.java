@@ -54,20 +54,28 @@ private ProcessTime processTime=new ProcessTime();
 	//  login/test.do
 	@RequestMapping("/test.do")
 	public String test(HttpSession session,Model m) {
-	 session.setMaxInactiveInterval(10*24*60*60);
-	 String userphone=(String)session.getAttribute("userphone");
-	 if(userphone!=null) {
+	 
+	 User u=(User)session.getAttribute("u");
+		if(u!=null) {
 		String date=processTime.getStringNowTimeWithDate();
 		m.addAttribute("date", date);
-		return "homePage";
-			}
+		session.setMaxInactiveInterval(10*24*60*60);
+		return "homePage";}
 		 
 	   return "loginPage";
 	}
 
 	@RequestMapping("/testStuNum.do")
 	public String testStuNum(HttpSession session,Model m){
+		User u=(User)session.getAttribute("u");
+		if(u!=null) {
+			String date=processTime.getStringNowTimeWithDate();
+		m.addAttribute("date", date);
 		session.setMaxInactiveInterval(10*24*60*60);
+		return "homePage";
+		
+		}
+		
 		return "loginByIdPwdPage";
 	}
 	

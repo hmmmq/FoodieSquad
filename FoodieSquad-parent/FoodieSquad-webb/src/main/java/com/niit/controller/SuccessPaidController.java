@@ -37,7 +37,7 @@ public class SuccessPaidController {
 	private HistoryService historyService;
 	@RequestMapping("/test.do")
 	// ../successPaid/test.do
-	public ModelAndView test(@ModelAttribute("order") Order o,HttpSession session) {
+	public String test(@ModelAttribute("order") Order o,HttpSession session) {
 		
 		List<User> deliverList=userService.selectByUserType(1);
 		
@@ -51,7 +51,7 @@ public class SuccessPaidController {
 		
 		ModelAndView mv=new ModelAndView();
 		
-		mv.setViewName("successPaidPage");
+//		mv.setViewName("successPaidPage");
 		
 		String verifyCode = "A"+String.valueOf(new Random().nextInt(8999) + 1000);
 		session.setAttribute("verifyCode", verifyCode);
@@ -61,8 +61,6 @@ public class SuccessPaidController {
 		Order order=new Order(userId, o.getOrderType(), deliverList.get(0).getUserId(),o.getOrderPrice(), 
 				o.getOrderPayType(),o.getOrderAddress(), verifyCode, o.getOrderUserTele(), null, null);
 		orderService.insert(order);
-		
-		
 		
 		
 		Cart cart=cartService.selectByPrimaryKey(userId);
@@ -95,7 +93,11 @@ public class SuccessPaidController {
 		//清空购物车
 		cartService.cleanByPrimaryKey(userId);
 		
-		return mv;
+		///go_to_order_detail.do/orderId/{orderId}/userId/{userId}.do
+		//获取最新订单号
+		Order new_order=orderService.selectLatestOrder(userId);
+		
+		return "redirect:/myOrder/go_to_order_detail.do/orderId/"+new_order.getOrderId()+"/userId/"+userId+".do";
 	}
 	
 }

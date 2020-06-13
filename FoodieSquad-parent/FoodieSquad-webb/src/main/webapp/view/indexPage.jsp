@@ -13,7 +13,22 @@
     <c:set value="${pageContext.request.contextPath}/css/" var="csspth" scope="page"/>
     <c:set value="${pageContext.request.contextPath}/view/" var="jsppth" scope="page"/>
     <link rel="stylesheet" type="text/css" href="${csspth}cssForIndexPage.css"/>
-    <script src="${pageContext.request.contextPath}/js/jquery-3.5.1.js"></script>
+    <script src="${pageContext.request.contextPath}/js/jquery-3.4.1.js"></script>
+    
+    <script>
+    function custom_close(){
+    	 if(confirm("您确定要关闭本页吗？")){
+    			debugger
+    	        window.opener=null;
+    			window.open('','_self');
+    			window.location.href="about:blank";
+    	        window.close();  //当断点执行到这里时会显示“Scripts may close only the windows that were opened by it.”所以要加上面“about:blank”页面才可以成功关闭
+    	    }
+    	    else{
+    	    }
+    	}
+    	</script>
+ 
 </head>
 <body>
 <!--容器-->
@@ -21,7 +36,7 @@
 
 <div class="topBox" >
 <!--顶部页面属性与后退-->
-<div class="headingBox"><img src="${imgpth}closebutton.svg" id="closebtn" class="closeButtonSize">
+<div class="headingBox"><img src="${imgpth}closebutton.svg" id="closebtn" class="closeButtonSize" onclick="custom_close();">
 </div>
 <!--logo-->
 <img class="logoImg" src="${imgpth}logo.png"/>

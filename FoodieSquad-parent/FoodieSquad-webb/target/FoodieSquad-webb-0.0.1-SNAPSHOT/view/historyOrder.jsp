@@ -26,10 +26,22 @@
     	var orderId=$(this).find(".orderId").attr("name");
 
     	//转跳
-    	window.location.href="go_to_order_detail.do/orderId/"+orderId+"/userId/"+${userId}+".do";	
+    	window.location.href="${pageContext.request.contextPath}/myOrder/go_to_order_detail.do/orderId/"+orderId+"/userId/"+${userId}+".do";	
     	});
+    	
+    	$("#goToHome").click(function(){
+    		
+    		
+    		window.location.href="${pageContext.request.contextPath}/login/returnToHome.do";	
+    		
+    		
+    	})
+    	
+    	
 
     });
+         
+         
          </script>
 <!--容器-->
 <div class="container">
@@ -37,7 +49,7 @@
  <!-- 标题组头部 -->
     <div id="d1">
         <!-- 返回符号.svg-->
-        <img src="${imgpth}return.svg" onclick="window.location.href='../login/returnToHome.do'">
+        <img src="${imgpth}return.svg" id="goToHome">
         <!--label-->
         <label style="">历史订单</label>
      </div>

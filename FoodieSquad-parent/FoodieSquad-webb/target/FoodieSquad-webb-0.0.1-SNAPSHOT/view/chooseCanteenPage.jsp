@@ -50,8 +50,8 @@
 <div class="searchBar">
 		<!--搜索框 搜索bar/下拉菜单-->
 		<div class="search">
-			<!-- 海南大学 徽章-->
-			<label class="text_HNU">海南大学<img src="${imgpth}path.svg"></label>
+			<!-- xx大学 徽章-->
+			<label class="text_HNU">xx大学<img src="${imgpth}path.svg"></label>
 			
       <input type="text" class="text_label"  oninput="testRestful()" id="searchstr" placeholder="搜索菜名/窗口名/食堂名" list="canteensForChoose" name="searchtext"/>
 		<datalist id="canteensForChoose"></datalist>
@@ -61,8 +61,8 @@
 		 </div>
 
 <div style="padding:0px 10px;">
-<!--海大食堂title-->
-<div class="text_canteen"><!--标签：海大食堂--><label>海大食堂</label><!--tab--><hr class="tab"></hr></div>
+<!--xx食堂title-->
+<div class="text_canteen"><!--标签：xx食堂--><label>x大食堂</label><!--tab--><hr class="tab"></hr></div>
 
 <!--标签：附近-->
 <label class="text_nearby">附近</label>

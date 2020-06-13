@@ -19,6 +19,12 @@
             <script>
          $(document).ready(
     function(){
+    	$("#go_back").click(function (){
+    		
+    		 window.location.href="${pageContext.request.contextPath}/myOrder/test.do";
+    		
+    		
+    	});
     });
          </script>
          
@@ -47,7 +53,7 @@
  <!-- 标题组头部 -->
     <div id="d1">
         <!-- 返回符号.svg-->
-        <img src="${imgpth}return.svg" onclick="window.location.href='../myOrder/test.do'">
+        <img src="${imgpth}return.svg" id="go_back">
         <!--label-->
         <label style="">订单详情</label>
      </div>
