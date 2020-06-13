@@ -1,4 +1,0 @@
-此层为service层，service对象将dao层的mapper对象进行整合和封装，多个实体类的mapper将统一为一个service，
-例如userService对象将usermapper,userTeleMapper,userAddressMapper进行封装。简化web层的数据库操作。
-com.niit.service包内含所有必要的service对象。
-com.niit.service.test包内含有所有调用service对象的操作测试。
