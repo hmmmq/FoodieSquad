@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/mvc
+            http://www.springframework.org/schema/mvc/spring-mvc.xsd
+            http://code.alibabatech.com/schema/dubbo
+            http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+            http://www.springframework.org/schema/context
+            http://www.springframework.org/schema/context/spring-context.xsd
+            http://www.springframework.org/schema/security
+            http://www.springframework.org/schema/security/spring-security.xsd">
+   
+    <security:http security="none" pattern="/css/*"/>
+    <security:http security="none" pattern="/image/*"/>
+    <security:http security="none" pattern="/js/*"/>
+    <security:http security="none" pattern="/plugin/*"/> 
+ <security:http >
+ <!--认证-->
+    <security:intercept-url pattern="/index/test.do" access="permitAll()"/>  
+    <security:intercept-url pattern="/login/usePhone.do" access="isAnonymous()"/>
+    <security:intercept-url pattern="/login/useStuNumber.do" access="isAnonymous()"/>
+    <security:intercept-url pattern="/login/*" access="hasAuthority('ROLE_EUSER')"/>
+    <security:intercept-url pattern="/canteen/*" access="hasAuthority('ROLE_EUSER')"/>  
+    <security:intercept-url pattern="/chooseFood/*" access="hasAuthority('ROLE_EUSER')"/>  
+    <security:intercept-url pattern="/home/*" access="hasAuthority('ROLE_EUSER')"/>  
+    <security:intercept-url pattern="/myOrder/*" access="hasAuthority('ROLE_EUSER')"/>  
+    <security:intercept-url pattern="/personalCenter/*" access="hasAuthority('ROLE_EUSER')"/>  
+    <security:intercept-url pattern="/submitOrder/*" access="hasAuthority('ROLE_EUSER')"/>  
+    <security:intercept-url pattern="/successPaid/*" access="hasAuthority('ROLE_EUSER')"/>  
+   <!--   <security:intercept-url pattern="/typeCaptcha/*" access="permitAll()"/>-->
+    <security:intercept-url pattern="/register/*" access="isAnonymous()"/> 
+   <security:intercept-url pattern="/user/*.jsp" access="hasAuthority('ROLE_EUSER')"/>  
+   <security:intercept-url pattern="/rider/test/*" access="hasAuthority('ROLE_EDRIVER')"/>  
+    <security:intercept-url pattern="/admin/*" access="hasAuthority('ROLE_EADMIN')"/>  
+   
+<security:logout logout-url="/personalCenter/logout.do"    success-handler-ref="myLogoutSuccessHandler"/>
+<security:form-login 
+login-page="/view/user/login/loginByIdPwdPage.jsp"  
+default-target-url="login/selectByUsername.do"
+authentication-failure-handler-ref="myAutheticationFailedHandler"
+authentication-success-handler-ref="myAuthenticationSuccessHandler"/> 
+<security:access-denied-handler error-page="/view/user/not_avalivable.jsp"/> 
+<security:csrf disabled="true"/>
+<security:remember-me token-repository-ref="jdbcTokenRepository" token-validity-seconds="3600" user-service-ref="myUserDetailService"/>
+<security:custom-filter ref="SmsCodeAuthenticationFilter" position="BASIC_AUTH_FILTER"/>
+</security:http>
+  
+ <security:authentication-manager >
+    <security:authentication-provider user-service-ref="myUserDetailService">
+    <security:password-encoder ref="passwordEncoder"></security:password-encoder>
+    </security:authentication-provider> 
+    <security:authentication-provider ref="SmsCodeAuthenticationProvider"></security:authentication-provider>
+ </security:authentication-manager>
+ 
+</beans>
