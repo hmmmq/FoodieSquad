@@ -2,7 +2,7 @@
  online ordering meal system
  
  ## dao
- 1.插入表值user表插入新用户，不可删！user_role表以及role、role_permission表都插入值。
+ 1.插入表值user表插入新用户newuser，不可删！user_role表以及role、role_permission表都插入值。
 
  ### sql
  说明：表数据插入了一个新用户newuser,一个用户hmq，一个管理员2，两个快递员，一个（商家）10101，密码均加密，可以用。
