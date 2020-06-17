@@ -33,18 +33,22 @@
     <security:intercept-url pattern="/personalCenter/*" access="hasAuthority('ROLE_EUSER')"/>  
     <security:intercept-url pattern="/submitOrder/*" access="hasAuthority('ROLE_EUSER')"/>  
     <security:intercept-url pattern="/successPaid/*" access="hasAuthority('ROLE_EUSER')"/>  
-   <!--   <security:intercept-url pattern="/typeCaptcha/*" access="permitAll()"/>-->
+   <security:intercept-url pattern="/typeCaptcha/*" access="hasAnyAuthority('ROLE_EUSER','ROLE_EREGISTER')"/>
     <security:intercept-url pattern="/register/*" access="isAuthenticated()"/> 
    <security:intercept-url pattern="/user/*.jsp" access="hasAuthority('ROLE_EUSER')"/>  
    <security:intercept-url pattern="/rider/test/*" access="hasAuthority('ROLE_EDRIVER')"/>  
     <security:intercept-url pattern="/admin/*" access="hasAuthority('ROLE_EADMIN')"/>  
    
 <security:logout logout-url="/personalCenter/logout.do"    success-handler-ref="myLogoutSuccessHandler"/>
+<!-- 
+default-target-url="redirect:/login/selectByUsername.do" 
+
+ -->
 <security:form-login 
-login-page="/view/user/login/loginByIdPwdPage.jsp"  
-default-target-url="login/selectByUsername.do"
+login-page="/view/user/login/loginByIdPwdPage.jsp"
+ authentication-success-handler-ref="myAuthenticationSuccessHandler"
 authentication-failure-handler-ref="myAutheticationFailedHandler"
-authentication-success-handler-ref="myAuthenticationSuccessHandler"/> 
+/> 
 <security:access-denied-handler error-page="/view/user/not_avalivable.jsp"/> 
 <security:csrf disabled="true"/>
 <security:remember-me token-repository-ref="jdbcTokenRepository" token-validity-seconds="3600" user-service-ref="myUserDetailService"/>

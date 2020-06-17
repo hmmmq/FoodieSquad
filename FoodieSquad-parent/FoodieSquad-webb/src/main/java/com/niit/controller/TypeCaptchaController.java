@@ -12,18 +12,24 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.annotations.Param;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.niit.pojo.User;
+import com.niit.service.UserService;
 import com.zhenzi.sms.ZhenziSmsClient;
 
 @Controller
 @RequestMapping("/typeCaptcha")
 public class TypeCaptchaController {
-	
+	@Autowired
+	UserService userService;
 	public Cookie savephonenum(String cellnum,HttpServletResponse response) {
 		System.out.println("Cookie cookie = new Cookie(\"oldcellnum\",cellnum);"+cellnum);
 		 Cookie cookie = new Cookie("oldcellnum",cellnum);
@@ -54,6 +60,8 @@ public class TypeCaptchaController {
 	public ModelAndView test(@Param("mobile") String mobile,HttpSession session,HttpServletRequest request,HttpServletResponse response) {
 		ModelAndView mv=new ModelAndView();
 		mv.setViewName("user/typeCaptchaPage");
+		User u = userService.selectByStuNum(getUser()); 
+		mobile=u.getUserTele().get(0).getUserTele();
 		System.out.println("String oldcellnum=(String)session.getAttribute(cellnum);");
 		Cookie c=getCookie(request);
 		if(c!=null){
@@ -94,5 +102,13 @@ public class TypeCaptchaController {
        
       
 		return mv;
+	}
+	private String getUser() {
+		
+		  Authentication authentication = SecurityContextHolder.getContext()
+	                .getAuthentication();
+		String username=authentication.getName();
+		return username;
+		
 	}
 }

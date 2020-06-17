@@ -11,6 +11,8 @@ import javax.servlet.http.HttpSession;
 import com.alibaba.fastjson.JSON;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -74,23 +76,20 @@ public String select(User u,Model m,HttpSession session) {
 }
 @RequestMapping(value="/selectByMobile.do")
 public String selectByusername(@Param("mobile") String mobile,Model m,HttpSession session) {
-	UserTele ut=userService.selectUserIdByUserTele(mobile);
-	if(ut==null) {
+	User u = userService.selectByStuNum(getUser()); 
+	int userId=u.getUserId();
+	if("newuser".equals(getUser())) {
 		return "redirect:/register/register.do";
 	}
-	int userId=ut.getUserId();
+	
+	mobile=u.getUserTele().get(0).getUserTele();
 	session.setAttribute("userId", userId);
-	User u=userService.selectByPrimaryKey(userId);
 	session.setAttribute("userphone", mobile);
 	return select(u,m,session);
 }
 @RequestMapping(value="/selectByUsername.do")
 public String selectByUsername(@Param("username") String username,Model m,HttpSession session) {
-	if(username==null) {
-		System.out.println("999999999999999999999999999999999999999999999999999999");
-		username=(String)session.getAttribute("username");
-		System.out.println("999999999999999999999999999999999999999999999999999999"+username);
-	}
+	username=getUser();
 	User u = userService.selectByStuNum(username); 
 	session.setAttribute("u", u);
 	return select(u,m,session);
@@ -107,6 +106,13 @@ public String useStuNumber() {
 	return "user/login/loginByIdPwdPage";
 }
 	
-	
+	private String getUser() {
+		
+		  Authentication authentication = SecurityContextHolder.getContext()
+	                .getAuthentication();
+		String username=authentication.getName();
+		return username;
+		
+	}
 
 }

@@ -20,9 +20,10 @@ private ObjectMapper objectMapper=new ObjectMapper();
 		Map result =new HashMap();
 		result.put("success", true);
 		String json=objectMapper.writeValueAsString(result);
-	   // response.setContentType("text/json;charset=utf-8");
-	   // response.getWriter().write(json);	
-		request.getRequestDispatcher("/login/selectByUsername.do").forward(request, response);
+	  System.out.println("**************request.getRequestDispatcher(\"/login/selectByUsername.do\").forward(request, response);****************************");
+		//request.getRequestDispatcher("");
+		response.sendRedirect(request.getContextPath()+"/login/selectByUsername.do");
+		
 	}
 
 }
