@@ -25,38 +25,38 @@
 <div class="logoBox">
 <img src="${imgpth}logo.svg" id="logoimg" class="logoSize"/>
 </div>
-<form action="../register/submit.do">
+<form action="../register/submit.do" method="post">
 <table>
             <tr>
                 <td class="td_left"><label for="username">用户名</label></td>
-                <td class="td_right"><input class="inputShape" type="text" name="username" id="username" placeholder="请输入用户名"></td>
+                <td class="td_right"><input class="inputShape" type="text" name="userName" id="username" placeholder="请输入用户名"></td>
             </tr>
 
             <tr>
                 <td class="td_left"><label for="password">密码</label></td>
-                <td class="td_right"><input class="inputShape" type="password" name="password" id="password" placeholder="请输入密码"></td>
+                <td class="td_right"><input class="inputShape" type="password" name="userPassword" id="password" placeholder="请输入密码"></td>
             </tr>
 
             <tr>
                 <td class="td_left"><label for="email">学号</label></td>
-                <td class="td_right"><input class="inputShape" type="text" name="stunum" id="stunum" placeholder="请输入学号"></td>
+                <td class="td_right"><input class="inputShape" type="text" name="userStudentNum" id="stunum" placeholder="请输入学号"></td>
             </tr>
 
             <tr>
                 <td class="td_left"><label for="name">送货地址</label></td>
-                <td class="td_right"><input class="inputShape" type="text" name="address" id="address" placeholder="请输入地址"></td>
+                <td class="td_right"><input class="inputShape" type="text" name="userAddress[0].userAddress" id="address" placeholder="请输入地址"></td>
             </tr>
 
             <tr>
                 <td class="td_left"><label for="tel">手机号</label></td>
-                <td class="td_right"><input class="inputShape" type="text" name="tel" id="tel" value="${userPhone}"></td>
+                <td class="td_right"><input class="inputShape" type="text" name="userTele[0].userTele" id="tel" value="${userPhone}"></td>
             </tr>
 
             <tr>
                 <td class="td_left"><label>性别</label></td>
                 <td class="td_right">
-                    <input type="radio" name="gender" value="m"> 男
-                    <input type="radio" name="gender" value="f"> 女
+                    <input type="radio" name="userGender" value="m"> 男
+                    <input type="radio" name="userGender" value="f"> 女
                 </td>
             </tr>
 

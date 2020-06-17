@@ -41,18 +41,24 @@
     <div class="logoBox">
         <img src="${imgpth}logo.svg" id="logoimg" class="logoSize"/>
     </div>
-    <form action="${pageContext.request.contextPath}/login" method="POST" name="f">
+    <form action="${pageContext.request.contextPath}/login" method="POST" name="f" id="f">
         <!--输入学号密码-->
         <div class="inputBox">
             <input   type="text"  name="username"  class="inputShape inputText" value/><br/><!--学号14位年份-->
             <input type="password"  name="password"   class="inputShape inputText" />
 <%--                   pattern="^[a-zA-Z]\w{5,17}$"/><!--字母开头，长度在6~18之间，只能包含字母、数字和下划线-->--%>
             <div style="margin-left: 94px" ><span id="userInfo"></span></div>
+           
+    		
+             
             <!--登录按钮-->
             <div class="loginButtonBox">
-            <input type="checkbox" name="remember-me" value="true">记住我
+          
                 <input type="submit" name="submit" class="loginButtonShape loginButtonText" value="登录"/>
+                 
             </div>
+            <p class="additionText" style="    margin-top: 9px;
+    margin-right: 39px;"> <input type="checkbox" name="remember-me" value="true" form="f">记住我</p>
 
         </div>
     </form>

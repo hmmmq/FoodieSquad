@@ -128,22 +128,22 @@ public class servicetest {
 
 //@Test
 	public void TestUser() {
-//	for(int i=1;i<9;i++)
-//userService.deleteByPrimaryKey(101);
- List<UserTele> userTelelist=new ArrayList<UserTele>();
- List<UserAddress> userAddress=new ArrayList<UserAddress>();
-for(int i=1;i<3;i++)
-    userTelelist.add(new UserTele(null,"1371418628"+i));
- for(int i=1;i<3;i++)
-	userAddress.add(new UserAddress(null,"address1"+i)) ;
- BigDecimal big=new BigDecimal("0");
+for(int i=1;i<4;i++)
+userService.deleteByPrimaryKey(i);
+// List<UserTele> userTelelist=new ArrayList<UserTele>();
+// List<UserAddress> userAddress=new ArrayList<UserAddress>();
+//for(int i=1;i<3;i++)
+//    userTelelist.add(new UserTele(null,"1371418627"+i));
+// for(int i=1;i<3;i++)
+//	userAddress.add(new UserAddress(null,"windowaddress1"+i)) ;
+// BigDecimal big=new BigDecimal("0");
 //User record=new User(10101,null, "10101","123", userTelelist,"m", userAddress,big, 2);
-User record=new User("2012839899004", "快递员","1234", userTelelist,"m", userAddress,big, 1);
+//User record=new User("2012839899004", "快递员","1234", userTelelist,"m", userAddress,big, 1);
 
 //User record=new User("2012839899001", "管理员2","123", userTelelist,"m", userAddress,big, 3);
 
 //User record=new User("2012839899001", "用户1","123", userTelelist,"m", userAddress,big, 0);
-userService.insert(record);
+//userService.insert(record);
 	}
 
 }

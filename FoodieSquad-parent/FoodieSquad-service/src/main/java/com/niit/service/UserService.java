@@ -62,17 +62,17 @@ public class UserService {
 			System.out.println("已有用户注册！");
 			return 0;
 		}
-		User u =new User(record.getUserStudentNum(), record.getUserName(), record.getUserPassword(), record.getUserGender(), record.getUserBalance(), record.getUserType());
+//		User u =new User(record.getUserStudentNum(), record.getUserName(), record.getUserPassword(), record.getUserGender(), record.getUserBalance(), record.getUserType());
 	   User u2=new User();
 		
 		
 		//商家 id即为windowid 10101~79999
-		if(u.getUserType()==2) {
+		if(record.getUserType()==2) {
 			userRole.setRoleId(3);
 			
 			userId = record.getUserId();
 	    	   
-	    	  }else if(u.getUserType()==3) {//管理员 50～100为管理员
+	    	  }else if(record.getUserType()==3) {//管理员 50～100为管理员
 	    		  userRole.setRoleId(4);
 				List<User> adminlist=userMapper.selectByUserType(3);
 				if(adminlist.size()!=0) {
@@ -87,7 +87,7 @@ public class UserService {
 				
 			
 			}
-		else if(u.getUserType()==1) {//快递员 101～1000为快递员
+		else if(record.getUserType()==1) {//快递员 101～1000为快递员
 			userRole.setRoleId(2);
 			List<User> driverlist=userMapper.selectByUserType(1);
 			if(driverlist.size()!=0) {
@@ -120,10 +120,10 @@ public class UserService {
 				}else {userId=1;}
 		
 			}
-		u.setUserId(userId);
+		record.setUserId(userId);
 		userRole.setUserId(userId);
 		
-		userMapper.insert(u);
+		userMapper.insert(record);
 		userRoleMapper.insert(userRole);
 		
 		// 自动增加主键，自动在相关表中插入数据；

@@ -75,6 +75,9 @@ public String select(User u,Model m,HttpSession session) {
 @RequestMapping(value="/selectByMobile.do")
 public String selectByusername(@Param("mobile") String mobile,Model m,HttpSession session) {
 	UserTele ut=userService.selectUserIdByUserTele(mobile);
+	if(ut==null) {
+		return "redirect:/register/register.do";
+	}
 	int userId=ut.getUserId();
 	session.setAttribute("userId", userId);
 	User u=userService.selectByPrimaryKey(userId);
@@ -103,5 +106,7 @@ public String selectByUsername(@Param("username") String username,Model m,HttpSe
 public String useStuNumber() {
 	return "user/login/loginByIdPwdPage";
 }
+	
+	
 
 }

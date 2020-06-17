@@ -25,7 +25,7 @@
     <security:intercept-url pattern="/index/test.do" access="permitAll()"/>  
     <security:intercept-url pattern="/login/usePhone.do" access="isAnonymous()"/>
     <security:intercept-url pattern="/login/useStuNumber.do" access="isAnonymous()"/>
-    <security:intercept-url pattern="/login/*" access="hasAuthority('ROLE_EUSER')"/>
+    <security:intercept-url pattern="/login/*" access="hasAnyAuthority('ROLE_EUSER','ROLE_EREGISTER')"/>
     <security:intercept-url pattern="/canteen/*" access="hasAuthority('ROLE_EUSER')"/>  
     <security:intercept-url pattern="/chooseFood/*" access="hasAuthority('ROLE_EUSER')"/>  
     <security:intercept-url pattern="/home/*" access="hasAuthority('ROLE_EUSER')"/>  
@@ -34,7 +34,7 @@
     <security:intercept-url pattern="/submitOrder/*" access="hasAuthority('ROLE_EUSER')"/>  
     <security:intercept-url pattern="/successPaid/*" access="hasAuthority('ROLE_EUSER')"/>  
    <!--   <security:intercept-url pattern="/typeCaptcha/*" access="permitAll()"/>-->
-    <security:intercept-url pattern="/register/*" access="isAnonymous()"/> 
+    <security:intercept-url pattern="/register/*" access="isAuthenticated()"/> 
    <security:intercept-url pattern="/user/*.jsp" access="hasAuthority('ROLE_EUSER')"/>  
    <security:intercept-url pattern="/rider/test/*" access="hasAuthority('ROLE_EDRIVER')"/>  
     <security:intercept-url pattern="/admin/*" access="hasAuthority('ROLE_EADMIN')"/>  

@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -28,11 +29,18 @@ private Logger logger=Logger.getLogger(myUserDetailService.class);
 	private UserTeleMapper userTeleMapper;
 	
 	public UserDetails loadUserByUsername(String mobile) throws UsernameNotFoundException {  
-		
+		User u= new User();
 	System.out.println("--------------entering2-------------------------------------------------------------------------------------------------------------------------------");
 	UserTele ut=userTeleMapper.selectUserIdByUserTele(mobile);
-	  User u=  userMapper.selectByPrimaryKey(ut.getUserId());
-	   String username= u.getUsername();
+	 if(ut==null) {
+		  System.out.println("new user!");
+			u=  userMapper.selectByPrimaryKey(0);
+		}else { 
+			u=  userMapper.selectByPrimaryKey(ut.getUserId());
+		}
+		  
+	 String username= u.getUsername();
+	 
 		System.out.println("String username"+username);
 		com.niit.pojo.User user= userMapper.findByUsername(username);
 			  List<Permission> pl= userMapper.findPermissionByUsername(username);

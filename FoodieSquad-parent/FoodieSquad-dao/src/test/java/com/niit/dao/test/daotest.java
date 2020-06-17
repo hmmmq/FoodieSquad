@@ -162,7 +162,7 @@ public class daotest {
 //	 o.setCartId(u.getUserId());
 //	 
 	   }
-@Test 
+//@Test 
     public void TestUser() {
 	
     	String s="10101";
@@ -170,8 +170,8 @@ public class daotest {
     	PasswordEncoder passwordwordEncoder=new BCryptPasswordEncoder();
     	u.setUserPassword(passwordwordEncoder.encode(u.getUserPassword()));
     	userMapper.updatePasswordByUsername(u);
-//       System.out.println("----------------------------------------"+u.toString()+"--------------------------------------------");
-//      List<Permission> pl= userMapper.findPermissionByUsername(s);
+       System.out.println("----------------------------------------"+u.toString()+"--------------------------------------------");
+      //List<Permission> pl= userMapper.findPermissionByUsername(s);
 //       for(Permission p:pl) {
 //    	   System.out.println("**************************"+p.toString()+"**************************");
 //       }
