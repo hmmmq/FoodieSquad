@@ -35,7 +35,7 @@
 <!--附加提醒-->
 <div class="addtionBox">
 
-    <p class="additionText"><input type="submit" style="font-size:20px;border:1px solid 	#D0D0D0;border-radius: 15px;padding:5px 100px;cursor: pointer;" value="登录"><br/><br/>
+    <p class="additionText"><input type="submit" style="font-size:20px;border:1px solid #D0D0D0;border-radius: 15px;padding:5px 100px;cursor: pointer;" value="登录"><br/><br/>
     登录/注册即代表同意<b>服务协议</b>
     <br>
     新用户输入手机号后自动进入注册页面

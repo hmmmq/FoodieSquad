@@ -18,6 +18,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -57,11 +58,10 @@ public class TypeCaptchaController {
 	}
 
 	@RequestMapping("/test.do")
-	public ModelAndView test(@Param("mobile") String mobile,HttpSession session,HttpServletRequest request,HttpServletResponse response) {
+	public ModelAndView test(@RequestParam("mobile") String mobile,HttpSession session,HttpServletRequest request,HttpServletResponse response) {
 		ModelAndView mv=new ModelAndView();
 		mv.setViewName("user/typeCaptchaPage");
 		User u = userService.selectByStuNum(getUser()); 
-		mobile=u.getUserTele().get(0).getUserTele();
 		System.out.println("String oldcellnum=(String)session.getAttribute(cellnum);");
 		Cookie c=getCookie(request);
 		if(c!=null){

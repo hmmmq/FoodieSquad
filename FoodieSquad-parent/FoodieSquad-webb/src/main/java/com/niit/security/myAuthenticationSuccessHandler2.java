@@ -23,7 +23,8 @@ private ObjectMapper objectMapper=new ObjectMapper();
 	   // response.setContentType("text/json;charset=utf-8");
 	   // response.getWriter().write(json);	
 		//request.getRequestDispatcher().forward(request, response);
-		response.sendRedirect(request.getContextPath()+"/typeCaptcha/test.do");
+		String mobile=(String)request.getParameter("mobile");
+		response.sendRedirect(request.getContextPath()+"/typeCaptcha/test.do?mobile="+mobile);
 	}
 
 }

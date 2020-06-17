@@ -35,6 +35,7 @@ private Logger logger=Logger.getLogger(myUserDetailService.class);
 	 if(ut==null) {
 		  System.out.println("new user!");
 			u=  userMapper.selectByPrimaryKey(0);
+			
 		}else { 
 			u=  userMapper.selectByPrimaryKey(ut.getUserId());
 		}

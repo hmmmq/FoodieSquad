@@ -9,9 +9,9 @@
  密码：hmq:1234   管理员2:123   两个快递员:1234    商家:123
  
  ## web
- 1.修改com.niit.security包下myAuthenticationSuccessHandler.java   myAuthenticationSuccessHandler2.java
- 2.修改spring-security.xml配置
+ 1.修改com.niit.security包下myAuthenticationSuccessHandler2.java
+ 2.修改TypeCaptchaController.java
 
  ### 功能
- 1.实现商户手机号或学号登录直接拦截，修复进入首页bug.
+ 1.修复用户手机号登录收不到短信；
 
